@@ -1,0 +1,40 @@
+body {
+    margin: 10px;
+    overflow-x: hidden;
+}
+
+section {
+    margin-bottom: 1rem;
+}
+
+.icon-margin-right {
+    margin-right: 0.3rem;
+}
+
+.icon-margin-left {
+    margin-left: 0.3rem;
+}
+
+.custom-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.custom-card-text {
+    margin-right: 0.5rem;
+}
+
+.custom-list-group-item {
+    background-color: #0D6EFD;
+    color: #ffffff;
+    padding-left: 0.5rem;
+    padding-right: 0;
+}
+
+.empty-state {
+    text-align: center;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+}
