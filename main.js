@@ -216,6 +216,8 @@ const renderizarStock = () => {
             }
         });
     } else {
+        const cardsStock = document.getElementById("cardsStock");
+        cardsStock.innerHTML="";
         emptyStateStock.classList.remove("d-none");
     }
 }
