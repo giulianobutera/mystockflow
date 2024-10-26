@@ -1,0 +1,20 @@
+[
+    {
+        "id": "Frutas",
+        "nombreStock": "Frutas",
+        "itemSimple": false,
+        "descripcion": "Frutas compradas en verdulería",
+        "items": [
+            {"idItem": "Banana", "nombre": "Banana", "cantidad": 4},
+            {"idItem": "Manzana", "nombre": "Manzana", "cantidad": 2}
+        ],
+        "cantidad": null},
+    {
+        "id": "Figuritas",
+        "nombreStock": "Figuritas repetidas",
+        "itemSimple": true,
+        "descripcion": "Figus repetidas del mundial Qatar 2022",
+        "items": null,
+        "cantidad": 250
+    }
+]

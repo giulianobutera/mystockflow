@@ -19,10 +19,17 @@
         <!-- Acciones -->
         <section>
             <div class="row">
-                <div class="col-12">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevoStock">
+                <div class="col-12 d-flex">
+                    <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#modalNuevoStock">
                         <i class="bi bi-plus-lg icon-margin-right"></i>Nuevo stock
                     </button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" id="botonNuevoStockPlantilla" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-plus-lg icon-margin-right"></i>Nuevo stock desde plantilla
+                        </button>
+                        <ul class="dropdown-menu" id="dropdownPlantillas">
+                        </ul>
+                    </div>
                     <!-- Modal para agregar nuevo stock -->
                     <div class="modal fade" id="modalNuevoStock" tabindex="-1" aria-labelledby="modalNuevoStockLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -34,30 +41,80 @@
                                 <div class="modal-body">
                                     <form id="formularioNuevoStock">
                                         <div class="container-fluid">
-                                            <!-- Nombre del ítem simple -->
+                                            <!-- Radios categoría/item -->
                                             <div class="row mb-3">
                                                 <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="nombreStock" class="form-label">Nombre del ítem simple</label>
-                                                        <input type="text" class="form-control" id="nombreStock" placeholder="Ingrese el nombre del ítem simple" required>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="tipoStock" id="radioCategoria" value="categoria" checked>
+                                                        <label class="form-check-label" for="radioCategoria">
+                                                            Categoría
+                                                            <i class="bi bi-folder-fill" title="Categoría"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="tipoStock" id="radioItemSimple" value="itemSimple">
+                                                        <label class="form-check-label" for="radioItemSimple">Ítem simple</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Descripción del ítem simple -->
-                                            <div class="row mb-3">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="descripcion" class="form-label">Descripción del ítem simple</label>
-                                                        <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción del ítem simple (opcional)">
+                                            <!-- SECCION CATEGORÍA -->
+                                            <div id="seccionCategoria">
+                                                <!-- Nombre de la categoría -->
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <label for="nombreCategoria" class="form-label">Nombre de la categoría</label>
+                                                        <input type="text" class="form-control" id="nombreCategoria" placeholder="Ingrese el nombre de la categoría" required>
+                                                    </div>
+                                                </div>
+                                                <!-- Descripción de la categoría -->
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <label for="descripcionCategoria" class="form-label">Descripción de la categoría</label>
+                                                        <input type="text" class="form-control" id="descripcionCategoria" placeholder="Ingrese descripción de la categoría (opcional)">
+                                                    </div>
+                                                </div>
+                                                <!-- Ítems de la categoría -->
+                                                <hr>
+                                                <div class="row">
+                                                    <h5 class="mb-2">Ítems de la categoría:</h5>
+                                                </div>
+                                                <div id="itemsCategoria">
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-12">
+                                                        <button type="button" class="btn btn-primary" id="agregarOtroItem">
+                                                            <i class="bi bi-plus-lg icon-margin-right"></i>Agregar otro ítem
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Cantidad de stock -->
-                                            <div class="row mb-3">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="cantidad" class="form-label">Cantidad de stock</label>
-                                                        <input type="number" class="form-control" id="cantidad" placeholder="Ingrese la cantidad de stock" required>
+                                            <!-- SECCIÓN ÍTEM SIMPLE -->
+                                            <div id="seccionItemSimple" class="d-none">
+                                                <!-- Nombre del ítem simple -->
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="nombreItemSimple" class="form-label">Nombre del ítem simple</label>
+                                                            <input type="text" class="form-control" id="nombreItemSimple" placeholder="Ingrese el nombre del ítem simple">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Descripción del ítem simple -->
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="descripcionItemSimple" class="form-label">Descripción del ítem simple</label>
+                                                            <input type="text" class="form-control" id="descripcionItemSimple" placeholder="Ingrese descripción del ítem simple (opcional)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Cantidad de stock del ítem simple -->
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="cantidadItemSimple" class="form-label">Stock</label>
+                                                            <input type="number" class="form-control" id="cantidadItemSimple" placeholder="Ingrese la cantidad de stock">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,7 +150,7 @@
             </div>
         </section>
     </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </body>
